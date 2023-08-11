@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AcountController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Liste des comptes</h1>
+    <div class="datatable-container">
+        <table id="tableau-acount" class="table" style="width:100%" >
+            <thead>
+                <tr>
+                    <th class="">Compte affaire</th>
+                    <th class="">Compte évènement (Veh)</th>
+                    <th class="">Compte dernier évènement (Veh)</th>
+                    <th class="">Numéro de fiche</th>
+                    <th>Libellé civilité</th>
+                    <th>Propriétaire actuel du véhicule</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>N° et Nom de la voie</th>
+                    <th>Complément adresse 1</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                    <th>Téléphone domicile</th>
+                    <th>Téléphone portable</th>
+                    <th>Téléphone job</th>
+                    <th>Email</th>
+                    <th>Date de mise en circulation</th>
+                    <th>Date achat (date de livraison)</th>
+                    <th>Date dernier évènement (Veh)</th>
+                    <th>Libellé marque (Mrq)</th>
+                    <th>Libellé modèle (Mod)</th>
+                    <th>Version</th>
+                    <th>VIN</th>
+                    <th>Immatriculation</th>
+                    <th>Type de prospect</th>
+                    <th>Kilométrage</th>
+                    <th>Libellé énergie (Energ)</th>
+                    <th>Vendeur VN</th>
+                    <th>Vendeur VO</th>
+                    <th>Commentaire de facturation (Veh)</th>
+                    <th>Numéro de dossier VN VO</th>
+                    <th>Intermediaire de vente VN</th>
+                    <th>Date évènement (Veh)</th>
+                    <th>Origine évènement (Veh)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for acount in acounts %}
+                    <tr>
+                        <td>{{ acount.businessAcount }}</td>
+                        <td>{{ acount.eventAcount }}</td>
+                        <td>{{ acount.lastEventAcount }}</td>
+                        <td>{{ acount.fileNumber }}</td>
+                        <td>{{ acount.salutation }}</td>
+                        <td>{{ acount.currentCarOwner }}</td>
+                        <td>{{ acount.name }}</td>
+                        <td>{{ acount.lastname }}</td>
+                        <td>{{ acount.streetNumberName }}</td>
+                        <td>{{ acount.complementAdress }}</td>
+                        <td>{{ acount.postalCode }}</td>
+                        <td>{{ acount.city }}</td>
+                        <td>{{ acount.phone }}</td>
+                        <td>{{ acount.cellPhone }}</td>
+                        <td>{{ acount.jobPhone }}</td>
+                        <td>{{ acount.mail }}</td>
+                        <td>{{ acount.circulationDate ? acount.circulationDate|date('d/m/Y') : '' }}</td>
+                        <td>{{ acount.buyDate ? acount.buyDate|date('d/m/Y') : '' }}</td>
+                        <td>{{ acount.eventLastDate ? acount.eventLastDate|date('d/m/Y') : '' }}</td>
+                        <td>{{ acount.mark }}</td>
+                        <td>{{ acount.model }}</td>
+                        <td>{{ acount.version }}</td>
+                        <td>{{ acount.vin }}</td>
+                        <td>{{ acount.matricule }}</td>
+                        <td>{{ acount.prospectType }}</td>
+                        <td>{{ acount.kilometrage }}</td>
+                        <td>{{ acount.fuelType }}</td>
+                        <td>{{ acount.sellerVn }}</td>
+                        <td>{{ acount.sellerVo }}</td>
+                        <td>{{ acount.factureComment }}</td>
+                        <td>{{ acount.VnVoType }}</td>
+                        <td>{{ acount.dirNumber }}</td>
+                        <td>{{ acount.intermediateSell }}</td>
+                        <td>{{ acount.eventDate ? acount.eventDate|date('d/m/Y') : '' }}</td>
+                        <td>{{ acount.originEvent }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th class="">Compte affaire</th>
+                    <th class="">Compte évènement (Veh)</th>
+                    <th class="">Compte dernier évènement (Veh)</th>
+                    <th class="">Numéro de fiche</th>
+                    <th>Libellé civilité</th>
+                    <th>Propriétaire actuel du véhicule</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>N° et Nom de la voie</th>
+                    <th>Complément adresse 1</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                    <th>Téléphone domicile</th>
+                    <th>Téléphone portable</th>
+                    <th>Téléphone job</th>
+                    <th>Email</th>
+                    <th>Date de mise en circulation</th>
+                    <th>Date achat (date de livraison)</th>
+                    <th>Date dernier évènement (Veh)</th>
+                    <th>Libellé marque (Mrq)</th>
+                    <th>Libellé modèle (Mod)</th>
+                    <th>Version</th>
+                    <th>VIN</th>
+                    <th>Immatriculation</th>
+                    <th>Type de prospect</th>
+                    <th>Kilométrage</th>
+                    <th>Libellé énergie (Energ)</th>
+                    <th>Vendeur VN</th>
+                    <th>Vendeur VO</th>
+                    <th>Commentaire de facturation (Veh)</th>
+                    <th>Numéro de dossier VN VO</th>
+                    <th>Intermediaire de vente VN</th>
+                    <th>Date évènement (Veh)</th>
+                    <th>Origine évènement (Veh)</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('jquery/jquery.min.js')}}"></script>
+    <script src="cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        // jquery
+        $(document).ready(function(){
+            $.fn.dataTable.moment( 'YYYY-MM-DD' );
+
+            var table = $('#tableau-acount').DataTable({
+                buttons: [
+                    {extend: 'excel', footer: true }
+                ],
+                "language": {
+                    "sEmptyTable": "Aucune donnée disponible dans le tableau",
+                    "sInfo": "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
+                    "sInfoEmpty": "Affichage de l'élément 0 à 0 sur 0 élément",
+                    "sInfoFiltered": "(filtré à partir de _MAX_ éléments au total)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ",",
+                    "sLengthMenu": "Afficher _MENU_ éléments",
+                    "sLoadingRecords": "Chargement...",
+                    "sProcessing": "Traitement...",
+                    "sSearch": "Rechercher :",
+                    "sZeroRecords": "Aucun élément correspondant trouvé",
+                    "oPaginate": {
+                        "sFirst": "Premier",
+                        "sLast": "Dernier",
+                        "sNext": "Suivant",
+                        "sPrevious": "Précédent"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": activer pour trier la colonne par ordre croissant",
+                        "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "%d lignes sélectionnées",
+                            "0": "Aucune ligne sélectionnée",
+                            "1": "1 ligne sélectionnée"
+                        }
+                    }
+                },
+                columns: [
+                   
+                ],
+                //annule le tri
+                //order : [[4 , 'desc']],
+                ordering : true, 
+                searching:true,
+                responsive: true,
+                scrollY: false,
+                scrollX: 1271,
+                scrollX: true,
+                paging: true,
+                autoFill: true,
+                
+            });
+        
+            $('#export').on('click',function () {
+                table.buttons('.buttons-excel').trigger();
+            })
+            $('#mySearchText').on( 'keyup', function () {
+                table.search($(this).val()).draw();
+            });
+           
+        })
+        
+    </script>
+{% endblock %}
